@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Anton, Inter } from "next/font/google";
 import "./globals.css";
-import { Suspense } from "react"; // 1. Import Suspense
+import { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Preloader from "@/components/Preloader";
 import CustomCursor from "@/components/CustomCursor";
@@ -36,17 +36,15 @@ export default function RootLayout({
     <html lang="en" className="bg-black">
       <body className={`${anton.variable} ${inter.variable} antialiased selection:bg-brand-yellow selection:text-black`}>
         <div className="grain" />
-        <SmoothScroll>
-          <Preloader />
-          {/* 2. Wrap components that use search params or dynamic hooks in Suspense */}
-          <Suspense fallback={null}>
+        {/* The Bulletproof Suspense Wrapper */}
+        <Suspense fallback={<div className="min-h-screen bg-black" />}>
+          <SmoothScroll>
+            <Preloader />
             <Navbar />
-          </Suspense>
-          <CustomCursor />
-          <Suspense fallback={null}>
+            <CustomCursor />
             {children}
-          </Suspense>
-        </SmoothScroll>
+          </SmoothScroll>
+        </Suspense>
       </body>
     </html>
   );
