@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef } from "react";
-import Lenis from "@studio-freight/lenis";
+import Lenis from 'lenis';
 import { usePathname, useSearchParams } from "next/navigation";
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
