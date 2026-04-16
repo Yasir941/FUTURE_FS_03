@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Anton, Inter } from "next/font/google";
 import "./globals.css";
+import { Suspense } from "react"; // 1. Import Suspense
 import Navbar from "@/components/Navbar";
 import Preloader from "@/components/Preloader";
 import CustomCursor from "@/components/CustomCursor";
@@ -37,12 +38,16 @@ export default function RootLayout({
         <div className="grain" />
         <SmoothScroll>
           <Preloader />
-          <Navbar />
+          {/* 2. Wrap components that use search params or dynamic hooks in Suspense */}
+          <Suspense fallback={null}>
+            <Navbar />
+          </Suspense>
           <CustomCursor />
-          {children}
+          <Suspense fallback={null}>
+            {children}
+          </Suspense>
         </SmoothScroll>
       </body>
     </html>
   );
 }
-
