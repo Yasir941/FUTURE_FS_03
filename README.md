@@ -188,7 +188,7 @@ npm start
 | **Internship** | Full Stack Web Development — Future Interns |
 | **Task** | 03 — Real Local Business Pitch & Build |
 | **Repository** | [FUTURE_FS_03](https://github.com/Yasir941/FUTURE_FS_03) |
-| **Deployment** | *(Insert Vercel Live Link)* |
+| **Deployment** | https://cutin-half.vercel.app/ |
 
 ---
 
