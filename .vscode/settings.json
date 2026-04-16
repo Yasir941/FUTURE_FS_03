@@ -1,0 +1,11 @@
+{
+  "css.customData": [
+    ".vscode/tailwind.json"
+  ],
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "ts",
+    "javascript": "javascript",
+    "typescript": "typescript"
+  }
+}

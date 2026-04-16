@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --brand-yellow: #ffb800;
+  --brand-emerald: #10b981;
+  --industrial-gray: #1a1a1a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Smooth Scroll (Lenis) Support --- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* --- Base Styling --- */
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide scrollbar while maintaining Lenis functionality */
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading uppercase tracking-tighter;
+  }
+  body {
+    @apply font-body font-light;
+  }
+}
+
+@layer utilities {
+  /* High-Precision Glass (Lab Terminal Style) */
+  .glass {
+    @apply bg-black/40 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)];
+  }
+
+  /* Industrial Glows */
+  .glow-yellow {
+    box-shadow: 0 0 20px rgba(255, 184, 0, 0.15);
+  }
+
+  .text-glow-yellow {
+    text-shadow: 0 0 15px rgba(255, 184, 0, 0.3);
+  }
+
+  /* Animated Scanner Line Effect */
+  .scanner-line {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scanner-line::after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(255, 184, 0, 0.05),
+      transparent
+    );
+    animation: scan 4s linear infinite;
+  }
+
+  @keyframes scan {
+    0% { top: -100%; }
+    100% { top: 100%; }
+  }
+
+  /* Industrial Shine for Buttons */
+  @keyframes shine {
+    from { left: -100%; }
+    to { left: 200%; }
+  }
+
+  .animate-shine {
+    animation: shine 1.5s infinite;
+  }
+
+  /* Custom Cursor Logic (Only for Desktop) */
+  @media (hover: hover) and (pointer: fine) {
+    .custom-cursor-active * {
+      cursor: none !important;
+    }
+  }
+
+  /* Laboratory Grain Overlay */
+  .grain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.04;
+    mix-blend-mode: soft-light;
+  }
+
+  /* Blueprint Grid Background */
+  .bg-grid {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+  }
+}
+
+/* Smooth Image Transitions */
+img {
+  @apply transition-opacity duration-700 ease-in-out;
+}
